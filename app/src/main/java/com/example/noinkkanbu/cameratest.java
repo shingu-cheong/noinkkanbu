@@ -6,6 +6,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class cameratest extends AppCompatActivity {
     private WebView mWebVie; // 웹뷰 선언
@@ -16,6 +17,7 @@ public class cameratest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cameratest);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         mWebVie = (WebView) findViewById(R.id.webView);
         mWebVie.setWebViewClient(new WebViewClient()); // 클릭시 새창 안뜨게

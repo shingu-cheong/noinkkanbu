@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.noinkkanbu.utils.ProjectConstants;
 
@@ -19,6 +20,7 @@ public class IntroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro); //xml , java 소스 연결
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
 
 
@@ -37,7 +39,7 @@ public class IntroActivity extends AppCompatActivity {
 
                 }
                 else{
-                    Intent intent = new Intent(getApplicationContext(), login.class);
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent); //인트로 실행 후 바로 MainActivity로 넘어감.
                     finish();
                 }
