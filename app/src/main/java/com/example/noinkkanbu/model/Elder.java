@@ -3,36 +3,36 @@ package com.example.noinkkanbu.model;
 
 public class Elder {
 
-    private Integer id;
+//    private String id;
 
     private String elderName;
 
     private String elderPh;
 
-    private String elderAdr;
+//    private String elderAdr;
 
     private String mngPh;
 
-    private String elderImg;
+//    private String elderImg;
 
     private String managerToken;
 
 
-    public String getElderImg() {
-        return elderImg;
-    }
+//    public String getElderImg() {
+//        return elderImg;
+//    }
+//
+//    public void setElderImg(String elderImg) {
+//        this.elderImg = elderImg;
+//    }
 
-    public void setElderImg(String elderImg) {
-        this.elderImg = elderImg;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public void setId(String id) {
+//        this.id = id;
+//    }
 
     public String getElderName() {
         return elderName;
@@ -50,13 +50,13 @@ public class Elder {
         this.elderPh = elderPh;
     }
 
-    public String getElderAdr() {
-        return elderAdr;
-    }
-
-    public void setElderAdr(String elderAdr) {
-        this.elderAdr = elderAdr;
-    }
+//    public String getElderAdr() {
+//        return elderAdr;
+//    }
+//
+//    public void setElderAdr(String elderAdr) {
+//        this.elderAdr = elderAdr;
+//    }
 
     public String getMngPh() {
         return mngPh;
