@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.example.noinkkanbu.home.MainActivity2;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 

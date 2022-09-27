@@ -1,4 +1,4 @@
-package com.example.noinkkanbu;
+package com.example.noinkkanbu.usersetting;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.example.noinkkanbu.R;
+import com.example.noinkkanbu.home.MainActivity2;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

@@ -1,4 +1,4 @@
-package com.example.noinkkanbu;
+package com.example.noinkkanbu.home;
 
 
 import android.content.DialogInterface;
@@ -20,6 +20,10 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 
+import com.example.noinkkanbu.MyMqtt;
+import com.example.noinkkanbu.R;
+import com.example.noinkkanbu.home.monitoring;
+import com.example.noinkkanbu.schedule;
 import com.example.noinkkanbu.thread.GetHuman;
 import com.hivemq.client.mqtt.mqtt3.Mqtt3Client;
 

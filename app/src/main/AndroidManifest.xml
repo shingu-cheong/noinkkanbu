@@ -21,7 +21,7 @@
             android:name="com.example.noinkkanbu.mqtttest"
             android:exported="true" />
         <activity
-            android:name=".AddOlderMan"
+            android:name=".manage.AddOlderMan"
             android:exported="true" />
         <activity
             android:name="com.example.noinkkanbu.RegisterActivity"
@@ -31,27 +31,30 @@
             android:label="kkanbu"
             android:exported="true" />
         <activity
-            android:name="com.example.noinkkanbu.LoginActivity"
+            android:name="com.example.noinkkanbu.usersetting.LoginActivity"
             android:exported="true" />
         <activity
             android:name=".cameratest"
             android:exported="true" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".home.MainActivity2"
             android:exported="true" /> <!-- <activity -->
         <!-- android:name=".management" -->
         <!-- android:exported="true" /> -->
         <activity
-            android:name=".monitoring"
+            android:name=".home.monitoring"
             android:exported="false" />
         <activity
             android:name=".schedule"
+            android:exported="true" />
+        <activity
+            android:name="com.example.noinkkanbu.usersetting.Register"
             android:exported="true" />
 
 
 
         <activity
-            android:name=".IntroActivity"
+            android:name=".home.IntroActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

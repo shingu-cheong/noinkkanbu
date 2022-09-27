@@ -1,4 +1,4 @@
-package com.example.noinkkanbu;
+package com.example.noinkkanbu.home;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import com.example.noinkkanbu.R;
+import com.example.noinkkanbu.home.MainActivity;
+import com.example.noinkkanbu.management;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 

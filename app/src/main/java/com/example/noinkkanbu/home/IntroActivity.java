@@ -1,4 +1,4 @@
-package com.example.noinkkanbu;
+package com.example.noinkkanbu.home;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +8,8 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.example.noinkkanbu.usersetting.LoginActivity;
+import com.example.noinkkanbu.R;
 import com.example.noinkkanbu.utils.ProjectConstants;
 
 
