@@ -37,6 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
                         fragment = new management();
                         break;
 
+
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
                 return true;

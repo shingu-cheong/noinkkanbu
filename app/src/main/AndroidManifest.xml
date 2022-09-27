@@ -48,6 +48,9 @@
             android:name=".schedule"
             android:exported="true" />
         <activity
+            android:name=".savepic"
+            android:exported="true" />
+        <activity
             android:name="com.example.noinkkanbu.usersetting.Register"
             android:exported="true" />
 
