@@ -1,8 +1,10 @@
 package com.example.noinkkanbu.manage;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -32,6 +34,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
@@ -46,9 +51,10 @@ public class AddOlderMan extends AppCompatActivity {
     TextInputLayout et_manName, et_manPh, et_managerPh, et_detail;
     EditText  et_manAdr;
     SharedPreferences shared ;
-    Button bt_addman;
+    Button bt_addman, bt_button;
     FirebaseUser firebaseUser;
     FirebaseFirestore db;
+    FirebaseStorage storage = FirebaseStorage.getInstance();;
     String elderId = UUID.randomUUID().toString();
     View.OnClickListener cl;
 
@@ -57,19 +63,18 @@ public class AddOlderMan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_older_man);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
         tb_addman = (Toolbar) findViewById(R.id.mt_toolbar);
         et_manName = findViewById(R.id.et_manName);
         et_manPh = findViewById(R.id.et_manPh);
-//        et_manAdr = findViewById(R.id.et_manAdress);
-//        et_manAdr.setFocusable(false);
+        et_manAdr = findViewById(R.id.et_manAdress);
+        et_manAdr.setFocusable(false);
         et_managerPh = findViewById(R.id.et_managerPh);
         et_detail = findViewById(R.id.et_manDetail);
         bt_addman = findViewById(R.id.addman);
         db = FirebaseFirestore.getInstance();
         firebaseUser  = FirebaseAuth.getInstance().getCurrentUser();
         setSupportActionBar(tb_addman);
-        Log.e("Fdsdasd", firebaseUser.getUid());
+
 
         ActionBar actionBar = getSupportActionBar();
 
@@ -84,9 +89,11 @@ public class AddOlderMan extends AppCompatActivity {
                 switch (v.getId()){
                     case R.id.addman:
                         addman();
-//                    case R.id.et_manAdress:
-//                        Intent intent = new Intent(AddOlderMan.this, SearchAddress.class);
-//                        getSearchResult.launch(intent);
+                        break;
+                    case R.id.et_manAdress:
+                        Intent intent = new Intent(AddOlderMan.this, SearchAddress.class);
+                        getSearchResult.launch(intent);
+                        break;
 
                 }
 
@@ -94,7 +101,7 @@ public class AddOlderMan extends AppCompatActivity {
         };
 
         bt_addman.setOnClickListener(cl);
-//        et_manAdr.setOnClickListener(cl);
+        et_manAdr.setOnClickListener(cl);
 
 
     }
@@ -169,30 +176,64 @@ public class AddOlderMan extends AppCompatActivity {
     }
 
 
+//    private void imgupdate() {
+////        profileImageView.setImageBitmap(bitmap);
+//        FirebaseStorage storage = FirebaseStorage.getInstance();
+//
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        //파이어스토어와 연결
+//        db = FirebaseFirestore.getInstance();
+//        StorageReference storageRef = storage.getReference();
+////        Log.e("timestamp",Timestamp.n;
+//        StorageReference mountainImagesRef = storageRef.child("PostImg/"+user.getUid()+"/file"+listsize+".jpg");
+//        if(galleryUri != null){
+//            UploadTask uploadTask = mountainImagesRef.putFile(galleryUri);
+//            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                @Override
+//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                    mountainImagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                        @Override
+//                        public void onSuccess(Uri uri) {
+//                            Log.e("이미지주소", uri.toString());
+////                            storeuri = uri.toString();
+//                            db.collection("Post").document(elderId)
+//                                    .update("elderImg", uri.toString());
+//                        }
+//
+//                    });
+//                }
+//            });
+//
+//        }
+//
+//
+//    }
+
+
 
     //데이터 삽입
     private Elder setElderData() {
 
         Elder elder = new Elder();
-//        elder.setElderAdr(et_manAdr.getText().toString());
-//        elder.setElderImg(null);
+        elder.setElderAdr(et_manAdr.getText().toString());
+        elder.setElderImg(null);
         elder.setElderName(et_manName.getEditText().getText().toString());
         elder.setElderPh(et_manPh.getEditText().getText().toString());
         elder.setMngPh(et_managerPh.getEditText().getText().toString());
-        elder.setManagerToken("fasdasf");
+        elder.setManagerToken(firebaseUser.getUid());
         return elder;
     }
 
-//    private  final ActivityResultLauncher<Intent> getSearchResult = registerForActivityResult(
-//            new ActivityResultContracts.StartActivityForResult(),
-//            result -> {
-//                if (result.getResultCode() == RESULT_OK) {
-//                    if (result.getData() != null) {
-//                        String data = result.getData().getStringExtra("data");
-//                        et_manAdr.setText(data);
-//                    }
-//                }
-//            }
-//    );
+    private  final ActivityResultLauncher<Intent> getSearchResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    if (result.getData() != null) {
+                        String data = result.getData().getStringExtra("data");
+                        et_manAdr.setText(data);
+                    }
+                }
+            }
+    );
 
 }

@@ -9,22 +9,22 @@ public class Elder {
 
     private String elderPh;
 
-//    private String elderAdr;
+    private String elderAdr;
 
     private String mngPh;
 
-//    private String elderImg;
+    private String elderImg;
 
     private String managerToken;
 
 
-//    public String getElderImg() {
-//        return elderImg;
-//    }
-//
-//    public void setElderImg(String elderImg) {
-//        this.elderImg = elderImg;
-//    }
+    public String getElderImg() {
+        return elderImg;
+    }
+
+    public void setElderImg(String elderImg) {
+        this.elderImg = elderImg;
+    }
 
 //    public String getId() {
 //        return id;
@@ -50,13 +50,13 @@ public class Elder {
         this.elderPh = elderPh;
     }
 
-//    public String getElderAdr() {
-//        return elderAdr;
-//    }
-//
-//    public void setElderAdr(String elderAdr) {
-//        this.elderAdr = elderAdr;
-//    }
+    public String getElderAdr() {
+        return elderAdr;
+    }
+
+    public void setElderAdr(String elderAdr) {
+        this.elderAdr = elderAdr;
+    }
 
     public String getMngPh() {
         return mngPh;

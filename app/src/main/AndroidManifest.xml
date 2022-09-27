@@ -11,6 +11,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="noinkkanbu"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -21,7 +22,7 @@
             android:name="com.example.noinkkanbu.mqtttest"
             android:exported="true" />
         <activity
-            android:name=".manage.AddOlderMan"
+            android:name="com.example.noinkkanbu.manage.AddOlderMan"
             android:exported="true" />
         <activity
             android:name="com.example.noinkkanbu.RegisterActivity"
@@ -47,6 +48,12 @@
         <activity
             android:name=".schedule"
             android:exported="true" />
+        <activity
+            android:name="com.example.noinkkanbu.SearchAddress"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+
+
         <activity
             android:name="com.example.noinkkanbu.usersetting.Register"
             android:exported="true" />
