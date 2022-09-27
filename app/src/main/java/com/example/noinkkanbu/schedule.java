@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
+import com.example.noinkkanbu.home.MainActivity2;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -33,6 +36,8 @@ public class schedule extends AppCompatActivity
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.schedule);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         back = findViewById(R.id.back);
         calendarView = findViewById(R.id.calendarView);
         diaryTextView = findViewById(R.id.diaryTextView);

@@ -1,4 +1,4 @@
-package com.example.noinkkanbu;
+package com.example.noinkkanbu.manage;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +19,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
 
+import com.example.noinkkanbu.R;
+import com.example.noinkkanbu.SearchAddress;
 import com.example.noinkkanbu.pojo.Elder;
 import com.example.noinkkanbu.retrofit.BaseEndPoint;
 import com.example.noinkkanbu.retrofit.ElderEndPoint;
