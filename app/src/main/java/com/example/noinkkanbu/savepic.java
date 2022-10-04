@@ -55,8 +55,8 @@ public class savepic extends AppCompatActivity {
                             // textview 동적생성
                             TextView tv = new TextView(savepic.this);
                             tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                            tv.setText(Integer.toString(i)+". new TextView");
-                            tv.setTextSize(30);
+                            tv.setText(Integer.toString(i)+". 번째 사진");
+                            tv.setTextSize(25);
                             tv.setTextColor(0xff004497);
                             layout.addView(tv);
 
