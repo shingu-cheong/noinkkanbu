@@ -20,7 +20,19 @@
         <entry key="..\:/Users/412-34/AndroidStudioProjects/Noinkkanbu/app/src/main/res/layout/setting.xml" value="0.87875" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable-v24/home.xml" value="0.1" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+<<<<<<< HEAD
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_add_older_man.xml" value="0.1" />
+=======
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_add_older_man.xml" value="0.2" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_cameratest.xml" value="0.24583333333333332" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_login.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_main.xml" value="0.6" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_main2.xml" value="0.1" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_management.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_monitoring.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_mqtttest.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_register.xml" value="0.24895833333333334" />
+>>>>>>> 690fc6483a5b62d35457f7fd905030ca067a5564
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_searchaddress.xml" value="0.1" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/detail_management.xml" value="0.1" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/menu/popup.xml" value="0.10729166666666666" />

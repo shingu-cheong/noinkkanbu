@@ -11,7 +11,12 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+<<<<<<< HEAD
         android:icon="@mipmap/ic_launcher1"
+=======
+        android:usesCleartextTraffic="true"
+        android:icon="@mipmap/ic_launcher"
+>>>>>>> 690fc6483a5b62d35457f7fd905030ca067a5564
         android:label="noinkkanbu"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -21,7 +26,7 @@
             android:name="com.example.noinkkanbu.mqtttest"
             android:exported="true" />
         <activity
-            android:name=".manage.AddOlderMan"
+            android:name="com.example.noinkkanbu.manage.AddOlderMan"
             android:exported="true" />
         <activity
             android:name="com.example.noinkkanbu.RegisterActivity"
@@ -48,11 +53,19 @@
             android:name=".schedule"
             android:exported="true" />
         <activity
+<<<<<<< HEAD
             android:name=".setting"
             android:exported="true" />
         <activity
             android:name=".savepic"
             android:exported="true" />
+=======
+            android:name="com.example.noinkkanbu.SearchAddress"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+
+
+>>>>>>> 690fc6483a5b62d35457f7fd905030ca067a5564
         <activity
             android:name="com.example.noinkkanbu.usersetting.Register"
             android:exported="true" />
