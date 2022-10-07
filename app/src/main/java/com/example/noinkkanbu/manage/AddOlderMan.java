@@ -229,7 +229,6 @@ public class AddOlderMan extends AppCompatActivity {
         StorageReference storageRef = storage.getReference();
 //        Log.e("timestamp",Timestamp.n;
         Timestamp timestamp = Timestamp.now();
-        Date date = new Date(Long.parseLong(timestamp));
         StorageReference elderImagesRef = storageRef.child("ElderImg/"+elderId+"/file"+ Timestamp.now().toString() +".jpg");
         if(galleryUri != null){
             UploadTask uploadTask = elderImagesRef.putFile(galleryUri);
