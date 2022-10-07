@@ -3,6 +3,8 @@ package com.example.noinkkanbu.manage;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,10 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -31,13 +35,19 @@ import com.example.noinkkanbu.utils.ProjectConstants;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.type.Date;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.UUID;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -52,10 +62,14 @@ public class AddOlderMan extends AppCompatActivity {
     EditText  et_manAdr;
     SharedPreferences shared ;
     Button bt_addman, bt_button;
+    String profilePath, uritxt, listsize;
     FirebaseUser firebaseUser;
     FirebaseFirestore db;
+    ImageView iv_elder;
     FirebaseStorage storage = FirebaseStorage.getInstance();;
     String elderId = UUID.randomUUID().toString();
+    Uri galleryUri;
+    byte[] data1;
     View.OnClickListener cl;
 
     @Override
@@ -71,6 +85,7 @@ public class AddOlderMan extends AppCompatActivity {
         et_managerPh = findViewById(R.id.et_managerPh);
         et_detail = findViewById(R.id.et_manDetail);
         bt_addman = findViewById(R.id.addman);
+        iv_elder = findViewById(R.id.elderImg);
         db = FirebaseFirestore.getInstance();
         firebaseUser  = FirebaseAuth.getInstance().getCurrentUser();
         setSupportActionBar(tb_addman);
@@ -95,6 +110,12 @@ public class AddOlderMan extends AppCompatActivity {
                         getSearchResult.launch(intent);
                         break;
 
+                    case R.id.elderImg:
+                        Intent galleryIntent = new Intent();
+                        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                        galleryIntent.setType("image/*");
+                        startActivityForResult(galleryIntent , 2);
+                        break;
                 }
 
             }
@@ -102,22 +123,14 @@ public class AddOlderMan extends AppCompatActivity {
 
         bt_addman.setOnClickListener(cl);
         et_manAdr.setOnClickListener(cl);
+        iv_elder.setOnClickListener(cl);
 
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                onBackPressed();
-                return  true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
-    public  void addman(){
-        SweetAlertDialog pDialog = new SweetAlertDialog(AddOlderMan.this,SweetAlertDialog.PROGRESS_TYPE);
+    public  void addman() {
+        SweetAlertDialog pDialog = new SweetAlertDialog(AddOlderMan.this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
         pDialog.setTitleText("Loading....");
         pDialog.setCancelable(true);
@@ -129,6 +142,7 @@ public class AddOlderMan extends AppCompatActivity {
         db.collection("Elders").document(elderId).set(elder).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
+                imgupdate();
                 pDialog.dismiss();
                 new SweetAlertDialog(AddOlderMan.this, SweetAlertDialog.SUCCESS_TYPE)
                         .setTitleText("등록완료")
@@ -144,6 +158,9 @@ public class AddOlderMan extends AppCompatActivity {
                         .show();
             }
         });
+    }
+
+
 
 
 
@@ -173,41 +190,69 @@ public class AddOlderMan extends AppCompatActivity {
 
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+//            profilePath = data.getStringExtra("profilePath");
+//            //파이어스토리지와 연결
+//
+//
+//            Bitmap bitmap = (Bitmap) data.getParcelableExtra("data");
+//            Log.e("dfs",bitmap.toString());
+//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//            data1 = baos.toByteArray();
+//
+//            iv_elder.setImageBitmap(bitmap);
+            Uri selectImageUri = data.getData();
+
+            galleryUri = data.getData();
+            iv_elder.setImageURI(galleryUri);
+
+
+
+
+        }
     }
 
 
-//    private void imgupdate() {
-////        profileImageView.setImageBitmap(bitmap);
-//        FirebaseStorage storage = FirebaseStorage.getInstance();
-//
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        //파이어스토어와 연결
-//        db = FirebaseFirestore.getInstance();
-//        StorageReference storageRef = storage.getReference();
-////        Log.e("timestamp",Timestamp.n;
-//        StorageReference mountainImagesRef = storageRef.child("PostImg/"+user.getUid()+"/file"+listsize+".jpg");
-//        if(galleryUri != null){
-//            UploadTask uploadTask = mountainImagesRef.putFile(galleryUri);
-//            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                    mountainImagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                        @Override
-//                        public void onSuccess(Uri uri) {
-//                            Log.e("이미지주소", uri.toString());
-////                            storeuri = uri.toString();
-//                            db.collection("Post").document(elderId)
-//                                    .update("elderImg", uri.toString());
-//                        }
-//
-//                    });
-//                }
-//            });
-//
-//        }
-//
-//
-//    }
+    private void imgupdate() {
+//        profileImageView.setImageBitmap(bitmap);
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //파이어스토어와 연결
+        db = FirebaseFirestore.getInstance();
+        StorageReference storageRef = storage.getReference();
+//        Log.e("timestamp",Timestamp.n;
+        Timestamp timestamp = Timestamp.now();
+        Date date = new Date(Long.parseLong(timestamp));
+        StorageReference elderImagesRef = storageRef.child("ElderImg/"+elderId+"/file"+ Timestamp.now().toString() +".jpg");
+        if(galleryUri != null){
+            UploadTask uploadTask = elderImagesRef.putFile(galleryUri);
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    elderImagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Log.e("이미지주소", uri.toString());
+//                            storeuri = uri.toString();
+                            db.collection("Elders").document(elderId)
+                                    .update("elderImg", uri.toString());
+                        }
+
+                    });
+                }
+            });
+
+        }
+
+
+    }
 
 
 
@@ -223,7 +268,7 @@ public class AddOlderMan extends AppCompatActivity {
         elder.setManagerToken(firebaseUser.getUid());
         return elder;
     }
-
+//----------------------------주소 받아오기기
     private  final ActivityResultLauncher<Intent> getSearchResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -235,5 +280,17 @@ public class AddOlderMan extends AppCompatActivity {
                 }
             }
     );
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return  true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
