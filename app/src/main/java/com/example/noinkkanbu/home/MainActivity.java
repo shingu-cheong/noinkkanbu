@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import com.example.noinkkanbu.MyMqtt;
 import com.example.noinkkanbu.R;
 import com.example.noinkkanbu.home.monitoring;
+import com.example.noinkkanbu.savepic;
 import com.example.noinkkanbu.schedule;
 import com.example.noinkkanbu.thread.GetHuman;
 import com.hivemq.client.mqtt.mqtt3.Mqtt3Client;
@@ -34,7 +35,7 @@ import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends Fragment {
     private MyMqtt myMqtt;
-    private ImageButton btn_live, btn_schedule;
+    private ImageButton btn_live, btn_schedule, btn_videofile;
     private ImageView profile, present;
     private GetHuman getHuman;
     private int humancount, humancountpre;
@@ -60,6 +61,7 @@ public class MainActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_main,container,false);
         btn_live = view.findViewById(R.id.btn_live);
+        btn_videofile = view.findViewById(R.id.btn_videofile);
         btn_schedule = view.findViewById(R.id.btn_schedule);
         profile = view.findViewById(R.id.home_profile);
         present = view.findViewById(R.id.present);
@@ -90,7 +92,7 @@ public class MainActivity extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-                builder.setTitle("리스트 추가 예제");
+                builder.setTitle("노인");
 
                 builder.setItems(R.array.LAN, new DialogInterface.OnClickListener(){
                     @Override
@@ -120,11 +122,16 @@ public class MainActivity extends Fragment {
                         Intent b = new Intent(getActivity(), schedule.class);
                         startActivity(b);
                         break;
+                    case R.id.btn_videofile:
+                        Intent c = new Intent(getActivity(), savepic.class);
+                        startActivity(c);
+                        break;
                 }
             }
         };
         btn_live.setOnClickListener(cl);
         btn_schedule.setOnClickListener(cl);
+        btn_videofile.setOnClickListener(cl);
         return view;
     }
 }

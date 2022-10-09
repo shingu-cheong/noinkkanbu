@@ -10,8 +10,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.noinkkanbu.R;
 import com.example.noinkkanbu.home.MainActivity;
+<<<<<<< HEAD
 
 import com.example.noinkkanbu.manage.management;
+=======
+import com.example.noinkkanbu.setting;
+>>>>>>> 63642fdb1e02a6f17931bc85fbc89c00d4f2afee
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -37,6 +41,10 @@ public class MainActivity2 extends AppCompatActivity {
                     case R.id.oldman:
                         fragment = new management();
                         break;
+                    case R.id.setting:
+                        fragment = new setting();
+                        break;
+
 
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
