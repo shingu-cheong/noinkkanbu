@@ -11,8 +11,12 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+
+        android:icon="@mipmap/ic_launcher1"
+
         android:usesCleartextTraffic="true"
-        android:icon="@mipmap/ic_launcher"
+
+
         android:label="noinkkanbu"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -47,6 +51,10 @@
             android:exported="false" />
         <activity
             android:name=".schedule"
+            android:exported="true" />
+
+        <activity
+            android:name=".savepic"
             android:exported="true" />
         <activity
             android:name="com.example.noinkkanbu.SearchAddress"
