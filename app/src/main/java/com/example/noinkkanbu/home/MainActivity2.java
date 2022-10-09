@@ -10,7 +10,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.noinkkanbu.R;
 import com.example.noinkkanbu.home.MainActivity;
-import com.example.noinkkanbu.management;
+
+import com.example.noinkkanbu.manage.management;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 

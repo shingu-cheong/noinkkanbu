@@ -21,10 +21,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:text="노인관리"
+            android:text="계정등록"
             android:textColor="@color/textColor"
             android:textSize="34sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="178dp"
+            tools:layout_editor_absoluteY="5dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -107,12 +109,13 @@
 
                 <TextView
                     android:id="@+id/et_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
 
                     android:strokeColor="@color/mainColor"
                     android:textColor="@color/textColor"
-                    android:textCursorDrawable="@drawable/registercursor" />
+                    android:textCursorDrawable="@drawable/registercursor"
+                    android:textSize="35dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 <!--            <Button-->
