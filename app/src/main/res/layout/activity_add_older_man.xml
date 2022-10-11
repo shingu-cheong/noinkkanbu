@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="Button"
+            android:text="등록"
             tools:layout_editor_absoluteX="306dp"
             tools:layout_editor_absoluteY="6dp" />
 
@@ -63,12 +63,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="0dp"
                 app:srcCompat="@mipmap/ic_launcher" />
-
-            <Button
-                android:id="@+id/buttontest"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
