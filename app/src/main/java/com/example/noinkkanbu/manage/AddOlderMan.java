@@ -229,14 +229,10 @@ public class AddOlderMan extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         StorageReference storageRef = storage.getReference();
 //        Log.e("timestamp",Timestamp.n;
-<<<<<<< HEAD
 
         Date date = Timestamp.now().toDate();
         StorageReference elderImagesRef = storageRef.child("ElderImg/"+elderId+"/file"+ date +".jpg");
-=======
-        Timestamp timestamp = Timestamp.now();
-        StorageReference elderImagesRef = storageRef.child("ElderImg/"+elderId+"/file"+ Timestamp.now().toString() +".jpg");
->>>>>>> 63642fdb1e02a6f17931bc85fbc89c00d4f2afee
+
         if(galleryUri != null){
             UploadTask uploadTask = elderImagesRef.putFile(galleryUri);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

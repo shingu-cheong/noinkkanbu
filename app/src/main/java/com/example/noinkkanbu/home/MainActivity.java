@@ -26,12 +26,25 @@ import com.example.noinkkanbu.home.monitoring;
 import com.example.noinkkanbu.savepic;
 import com.example.noinkkanbu.schedule;
 import com.example.noinkkanbu.thread.GetHuman;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.hivemq.client.internal.util.StringUtil;
 import com.hivemq.client.mqtt.mqtt3.Mqtt3Client;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends Fragment {
     private MyMqtt myMqtt;
@@ -43,7 +56,12 @@ public class MainActivity extends Fragment {
     private Mqtt3Client client;
     private String json, s;
     private JSONObject jsonObject =null , jsonpre = null;
+    private String nowElderId;
+    private List<String> namelist = new ArrayList<String>();
+    private String[] items ;
     private View.OnClickListener cl;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +69,7 @@ public class MainActivity extends Fragment {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         myMqtt = new MyMqtt();
         client= myMqtt.getClient();
+
 
 //
         }
@@ -87,24 +106,45 @@ public class MainActivity extends Fragment {
             Log.d("mqttpayload", String.valueOf(jsonObject));
         }).send();
 
+
+        Query query =  db.collection("Elders").whereEqualTo("managerToken",user.getUid());
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()){
+                    for (QueryDocumentSnapshot document : task.getResult()){
+                        Log.e("뭘가져올건데", document.getString("elderName"));
+                        namelist.add(document.getString("elderName"));
+
+                    }
+
+                }
+            }
+        });
+
+
+
         view.findViewById(R.id.btn_popup).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
 
-                builder.setTitle("노인");
+                builder
+                    .setSingleChoiceItems(namelist.toArray(new String[0]), -1, new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int pos)
+                        {
+                            items =  namelist.toArray(new String[0]);
+                            Toast.makeText(getActivity(),items[pos],Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .setPositiveButton("선택", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                builder.setItems(R.array.LAN, new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialog, int pos)
-                    {
-                        String[] items = getResources().getStringArray(R.array.LAN);
-                        Toast.makeText(getActivity(),items[pos],Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
+                        }
+                    })
+                    .show();
             }
         });
 

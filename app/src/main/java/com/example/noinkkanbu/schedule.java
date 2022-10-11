@@ -18,11 +18,12 @@ import com.example.noinkkanbu.home.MainActivity2;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.time.format.DateTimeFormatter;
 
 public class schedule extends AppCompatActivity
 {
     public String readDay = null;
-    public String str = null;
+    public String str = null, selectday = null;
     public CalendarView calendarView;
     public Button cha_Btn, del_Btn, save_Btn;
     public TextView diaryTextView, textView2, textView3;
@@ -89,6 +90,14 @@ public class schedule extends AppCompatActivity
             }
         });
     }
+
+
+
+//    private void addstore(){
+//        String dfsf = diaryTextView.toString();
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy / ")
+//
+//    }
 
     public void checkDay(int cYear, int cMonth, int cDay)
     {
