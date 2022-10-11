@@ -42,12 +42,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.google.type.Date;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.UUID;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -228,8 +229,10 @@ public class AddOlderMan extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         StorageReference storageRef = storage.getReference();
 //        Log.e("timestamp",Timestamp.n;
-        Timestamp timestamp = Timestamp.now();
-        StorageReference elderImagesRef = storageRef.child("ElderImg/"+elderId+"/file"+ Timestamp.now().toString() +".jpg");
+
+        Date date = Timestamp.now().toDate();
+        StorageReference elderImagesRef = storageRef.child("ElderImg/"+elderId+"/file"+ date +".jpg");
+
         if(galleryUri != null){
             UploadTask uploadTask = elderImagesRef.putFile(galleryUri);
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

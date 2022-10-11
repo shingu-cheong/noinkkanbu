@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/412-34/AndroidStudioProjects/Noinkkanbu/app/src/main/res/layout/activity_add_older_man.xml" value="0.87875" />
         <entry key="..\:/Users/412-34/AndroidStudioProjects/Noinkkanbu/app/src/main/res/layout/activity_intro.xml" value="0.87875" />
         <entry key="..\:/Users/412-34/AndroidStudioProjects/Noinkkanbu/app/src/main/res/layout/activity_login.xml" value="0.87875" />
         <entry key="..\:/Users/412-34/AndroidStudioProjects/Noinkkanbu/app/src/main/res/layout/activity_main.xml" value="0.75" />
@@ -20,11 +19,52 @@
         <entry key="..\:/Users/412-34/AndroidStudioProjects/Noinkkanbu/app/src/main/res/layout/schedule.xml" value="0.87875" />
         <entry key="..\:/Users/412-34/AndroidStudioProjects/Noinkkanbu/app/src/main/res/layout/setting.xml" value="0.87875" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable-v24/home.xml" value="0.1" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable-v24/ic_baseline_arrow_drop_down_24.xml" value="0.1485" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable-v24/round_button.xml" value="0.1485" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable-v24/shadow.xml" value="0.1485" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable/home_pofile_round.xml" value="0.1485" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable/home_profileround.xml" value="0.1485" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1485" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable/ic_image.xml" value="0.1485" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+<<<<<<< HEAD
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable/image_3.xml" value="0.1" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable/menu_selector_color.xml" value="0.1485" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable/registercursor.xml" value="0.1485" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/drawable/registerfield.xml" value="0.1485" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_add_older_man.xml" value="0.6" />
+=======
+<<<<<<< HEAD
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_add_older_man.xml" value="0.1" />
+=======
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_add_older_man.xml" value="0.2" />
+>>>>>>> 63642fdb1e02a6f17931bc85fbc89c00d4f2afee
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_cameratest.xml" value="0.24583333333333332" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_login.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_main.xml" value="0.6" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_main2.xml" value="0.1" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_management.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_monitoring.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_mqtttest.xml" value="0.24895833333333334" />
+<<<<<<< HEAD
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_register.xml" value="0.4" />
+=======
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_register.xml" value="0.24895833333333334" />
+>>>>>>> 690fc6483a5b62d35457f7fd905030ca067a5564
+>>>>>>> 63642fdb1e02a6f17931bc85fbc89c00d4f2afee
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/activity_searchaddress.xml" value="0.1" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/detail_management.xml" value="0.1" />
+<<<<<<< HEAD
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/fsdfs.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/google_login.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/item.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/setting.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/layout/test.xml" value="1.0" />
+=======
+>>>>>>> 63642fdb1e02a6f17931bc85fbc89c00d4f2afee
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/menu/popup.xml" value="0.10729166666666666" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1485" />
+        <entry key="..\:/Users/rhrna/AndroidStudioProjects/study1/noinkkanbu/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1485" />
       </map>
     </option>
   </component>
