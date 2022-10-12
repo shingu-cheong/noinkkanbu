@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="Button"
+            android:text="등록"
             tools:layout_editor_absoluteX="306dp"
             tools:layout_editor_absoluteY="6dp" />
 
@@ -62,13 +62,7 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="0dp"
-                app:srcCompat="@mipmap/ic_launcher" />
-
-            <Button
-                android:id="@+id/buttontest"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
+                app:srcCompat="@drawable/garo" />
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
@@ -147,6 +141,28 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_manDetail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textColorHint="@color/textColor"
+                    app:boxStrokeColor="@color/mainColor"
+                    app:hintTextColor="@color/textColor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="특이사항"
+                        android:strokeColor="@color/mainColor"
+                        android:textColor="@color/textColor"
+                        android:textCursorDrawable="@drawable/registercursor" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/et_managerPh"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -168,27 +184,7 @@
                         android:textCursorDrawable="@drawable/registercursor" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_manDetail"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:textColorHint="@color/textColor"
-                    app:boxStrokeColor="@color/mainColor"
-                    app:hintTextColor="@color/textColor"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
 
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="특이사항"
-                        android:strokeColor="@color/mainColor"
-                        android:textColor="@color/textColor"
-                        android:textCursorDrawable="@drawable/registercursor" />
-                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
         </LinearLayout>

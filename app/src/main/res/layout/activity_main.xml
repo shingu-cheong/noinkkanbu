@@ -27,13 +27,13 @@
 
         <ImageView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="66dp"
+            android:layout_width="365dp"
+            android:layout_height="65dp"
             android:layout_gravity="center|top"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/kkanbu" />
+            app:srcCompat="@drawable/icon" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/home_profile"
@@ -80,10 +80,26 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/textView6"
-            android:layout_width="130dp"
-            android:layout_height="29dp"
-            android:text="박웅희 어르신"
+            android:id="@+id/noinname"
+            android:layout_width="57dp"
+            android:layout_height="30dp"
+            android:text="박웅희"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/home_profile"
+            app:layout_constraintEnd_toStartOf="@+id/btn_popup"
+            app:layout_constraintHorizontal_bias="0.645"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintVertical_bias="0.571"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/noinname1"
+            android:layout_width="69dp"
+            android:layout_height="30dp"
+            android:text=" 어르신"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="bold"
@@ -92,7 +108,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/view"
             app:layout_constraintTop_toBottomOf="@+id/title"
-            app:layout_constraintVertical_bias="0.666"
+            app:layout_constraintVertical_bias="0.6"
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
