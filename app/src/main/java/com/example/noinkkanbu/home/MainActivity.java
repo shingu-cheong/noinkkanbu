@@ -115,6 +115,7 @@ public class MainActivity extends Fragment {
                     for (QueryDocumentSnapshot document : task.getResult()){
                         Log.e("무엇을 가져오나요", document.getString("elderName"));
                         namelist.add(document.getString("elderName"));
+                        document.getId();
 
                     }
 

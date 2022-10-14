@@ -1,7 +1,11 @@
 package com.example.noinkkanbu.model;
 
 
-public class Elder {
+import androidx.navigation.NavType;
+
+import java.io.Serializable;
+
+public class Elder implements Serializable {
 
 //    private String id;
 
