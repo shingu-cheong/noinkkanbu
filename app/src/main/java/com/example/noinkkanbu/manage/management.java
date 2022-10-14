@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.noinkkanbu.Adapter;
 import com.example.noinkkanbu.R;
 
@@ -82,9 +84,8 @@ public class management extends Fragment {
 
             @Override
             protected void onBindViewHolder(@NonNull ElderViewHolder holder, int position, @NonNull Elder model) {
-                holder.manname.setText(model.getElderName());
-                holder.elderph.setText(model.getElderPh());
-                holder.mngph.setText(model.getMngPh());
+                holder.bind(model);
+
 
             }
         };
@@ -136,13 +137,39 @@ public class management extends Fragment {
 
     private class ElderViewHolder extends RecyclerView.ViewHolder {
         TextView manname, elderph, mngph;
+        ImageView elderImg;
+        Elder  eldermodel;
         public ElderViewHolder(@NonNull View itemView) {
             super(itemView);
 
             manname = itemView.findViewById(R.id.name);
             elderph = itemView.findViewById(R.id.elder_ph);
             mngph = itemView.findViewById(R.id.mng_ph);
+            elderImg = itemView.findViewById(R.id.elder_img);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), elderDetail.class);
+                    intent.putExtra("model", eldermodel);
+                    itemView.getContext().startActivity(intent);
+                }
+            });
+
         }
+
+        public void bind(Elder elder){
+            eldermodel = elder;
+            manname.setText(elder.getElderName());
+            elderph.setText(elder.getElderPh());
+            mngph.setText(elder.getMngPh());
+            Glide.with(elderImg)
+                    .load(elder.getElderImg())
+                    .into(elderImg);
+
+
+        }
+
     }
 
     @Override
