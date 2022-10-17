@@ -39,7 +39,7 @@ public class savepic extends AppCompatActivity {
         setContentView(R.layout.activity_savepic);
 
         // 이미지 폴더 경로 참조
-        StorageReference listRef = FirebaseStorage.getInstance().getReference().child("photo");
+        StorageReference listRef = FirebaseStorage.getInstance().getReference().child("image_store");
 
         // listAll(): 폴더 내의 모든 이미지를 가져오는 함수
         listRef.listAll()
@@ -55,10 +55,11 @@ public class savepic extends AppCompatActivity {
                             // textview 동적생성
                             TextView tv = new TextView(savepic.this);
                             tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                            tv.setText(Integer.toString(i)+". 번째 사진");
+                            tv.setText(i +"번째 사진");
                             tv.setTextSize(25);
                             tv.setTextColor(0xff004497);
                             layout.addView(tv);
+                            i += 1;
 
                             //imageview 동적생성
                             ImageView iv = new ImageView(savepic.this);

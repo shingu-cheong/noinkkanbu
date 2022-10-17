@@ -41,6 +41,10 @@
         <activity
             android:name=".cameratest"
             android:exported="true" />
+
+        <activity
+            android:name=".manage.elderDetail"
+            android:exported="true" />
         <activity
             android:name=".home.MainActivity2"
             android:exported="true" /> <!-- <activity -->

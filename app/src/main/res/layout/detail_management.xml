@@ -31,106 +31,389 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="350dp"
-            android:layout_height="130dp"
-            android:layout_marginEnd="28dp"
-            app:cardCornerRadius="40dp"
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/home_profile"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="14dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/oilnam"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteY="27dp">
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/homeroundImage"
+            app:strokeColor="@color/white"
+            app:strokeWidth="5dp" />
 
-            <EditText
-                android:id="@+id/editTextTextPersonName"
-                android:layout_width="wrap_content"
-                android:layout_height="44dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:layout_marginBottom="45dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_profile"
+            tools:ignore="MissingConstraints">
+
+
+            <TextView
+                android:id="@+id/dm_name"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
                 android:layout_gravity="right"
+                android:layout_marginTop="16dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="이름 : 오일남" />
+                android:text="이름 : "
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toStartOf="@+id/dm_ph1"
+                app:layout_constraintHorizontal_bias="0.301"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/editTextTextPersonName2"
-                android:layout_width="wrap_content"
-                android:layout_height="44dp"
+            <TextView
+                android:id="@+id/dm_name1"
+                android:layout_width="183dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="48dp"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="386dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintBottom_toTopOf="@+id/dm_ph"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dm_ph1" />
+
+            <TextView
+                android:id="@+id/dm_ph"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
                 android:layout_gravity="right"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="성별 : 남" />
+                android:text="P.H : "
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toStartOf="@+id/dm_name1"
+                app:layout_constraintHorizontal_bias="0.295"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view7" />
 
-            <EditText
-                android:id="@+id/editTextTextPersonName3"
-                android:layout_width="wrap_content"
-                android:layout_height="44dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="80dp"
+            <TextView
+                android:id="@+id/dm_ph1"
+                android:layout_width="183dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="48dp"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="386dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintBottom_toTopOf="@+id/dm_edress1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dm_name1" />
+
+
+            <TextView
+                android:id="@+id/dm_edress"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="P.H : 010-4050-0147" />
+                android:text="주소 : "
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toStartOf="@+id/dm_edress1"
+                app:layout_constraintHorizontal_bias="0.295"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
 
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars" />
+            <TextView
+                android:id="@+id/dm_edress1"
+                android:layout_width="183dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="48dp"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="386dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintBottom_toTopOf="@+id/dm_Uniq1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dm_edress1"
+                app:layout_constraintVertical_bias="0.526" />
+
+            <TextView
+                android:id="@+id/dm_Uniq"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="특이사항 : "
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toStartOf="@+id/dm_Uniq1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+            <TextView
+                android:id="@+id/dm_Uniq1"
+                android:layout_width="255dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="18dp"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dm_Uniq"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="386dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dm_Uniq1" />
+
+            <TextView
+                android:id="@+id/dm_bt"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="5dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="혈핵형 : "
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toStartOf="@+id/dm_bt1"
+                app:layout_constraintHorizontal_bias="0.301"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+            <TextView
+                android:id="@+id/dm_bt1"
+                android:layout_width="183dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="18dp"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dm_bt"
+                app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="386dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dm_bt" />
+
+            <TextView
+                android:id="@+id/dm_gd"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="130dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="보호자정보"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toStartOf="@+id/dm_gd1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+            <TextView
+                android:id="@+id/dm_gd1"
+                android:layout_width="56dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="12dp"
+                android:text="관계: "
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toStartOf="@+id/dm_gd2"
+                app:layout_constraintStart_toEndOf="@+id/dm_gd"
+                app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+            <TextView
+                android:id="@+id/dm_gd2"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="47dp"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dm_gd1"
+                app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+            <TextView
+                android:id="@+id/dm_gdname"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:layout_marginStart="63dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="190dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="이름 :"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toStartOf="@+id/dm_gdname1"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dm_gd" />
+
+            <TextView
+                android:id="@+id/dm_gdname1"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="47dp"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dm_gd1" />
 
 
-        </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/dm_gdph"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:layout_marginStart="63dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="97dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="전화번호 :"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toStartOf="@+id/dm_gdph2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dm_gdname" />
 
-        <EditText
-            android:id="@+id/edit1"
-            android:layout_width="350dp"
-            android:layout_height="44dp"
-            android:layout_gravity="right"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="이메일 : rranbu@naver.com"
-            tools:layout_editor_absoluteX="33dp"
-            tools:layout_editor_absoluteY="177dp" />
+            <TextView
+                android:id="@+id/dm_gdph2"
+                android:layout_width="183dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="48dp"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dm_gdname1" />
 
-        <EditText
-            android:id="@+id/edit2"
-            android:layout_width="348dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="주소 : 경기도 성남시 skrr"
-            tools:layout_editor_absoluteX="33dp"
-            tools:layout_editor_absoluteY="233dp" />
+            <View
+                android:id="@+id/view6"
+                android:layout_width="386dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dm_gdph" />
 
-        <EditText
-            android:id="@+id/edit3"
-            android:layout_width="349dp"
-            android:layout_height="43dp"
-            android:layout_gravity="right"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="혈핵형 : RH + A"
-            tools:layout_editor_absoluteX="33dp"
-            tools:layout_editor_absoluteY="345dp" />
+            <TextView
+                android:id="@+id/dm_dv"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="100dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="기기연결 : "
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/dm_dv1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view6" />
 
-        <EditText
-            android:id="@+id/edit4"
-            android:layout_width="351dp"
-            android:layout_height="44dp"
-            android:layout_gravity="right"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="특이사항 : 치매, 고혈합, 심근경색 증상"
-            tools:layout_editor_absoluteX="33dp"
-            tools:layout_editor_absoluteY="397dp" />
+            <TextView
+                android:id="@+id/dm_dv1"
+                android:layout_width="183dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="40dp"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view6" />
 
-        <EditText
-            android:id="@+id/edit5"
-            android:layout_width="354dp"
-            android:layout_height="43dp"
-            android:layout_gravity="right"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="생년월일 : 1943. 03. 12"
-            tools:layout_editor_absoluteX="33dp"
-            tools:layout_editor_absoluteY="288dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
