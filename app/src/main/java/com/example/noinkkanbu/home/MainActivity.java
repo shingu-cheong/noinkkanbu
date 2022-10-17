@@ -1,16 +1,23 @@
 package com.example.noinkkanbu.home;
 
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckedTextView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,15 +25,22 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
 import com.example.noinkkanbu.MyMqtt;
 import com.example.noinkkanbu.R;
 import com.example.noinkkanbu.home.monitoring;
+import com.example.noinkkanbu.manage.elderDetail;
+import com.example.noinkkanbu.manage.management;
 import com.example.noinkkanbu.model.Elder;
 import com.example.noinkkanbu.savepic;
 import com.example.noinkkanbu.schedule;
 import com.example.noinkkanbu.thread.GetHuman;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,7 +63,7 @@ import java.util.List;
 
 public class MainActivity extends Fragment {
     private MyMqtt myMqtt;
-    private ImageButton btn_live, btn_schedule, btn_videofile;
+    private ImageButton btn_live, btn_schedule, btn_videofile, btn_popup;
     private ImageView profile, present;
     private GetHuman getHuman;
     private int humancount, humancountpre;
@@ -64,6 +78,7 @@ public class MainActivity extends Fragment {
     private View.OnClickListener cl;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private  FirestoreRecyclerAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,6 +99,7 @@ public class MainActivity extends Fragment {
         btn_live = view.findViewById(R.id.btn_live);
         btn_videofile = view.findViewById(R.id.btn_videofile);
         btn_schedule = view.findViewById(R.id.btn_schedule);
+        btn_popup = view.findViewById(R.id.btn_popup);
         profile = view.findViewById(R.id.home_profile);
         present = view.findViewById(R.id.present);
         GradientDrawable drawable = (GradientDrawable) getContext().getDrawable(R.drawable.home_profileround);
@@ -115,9 +131,11 @@ public class MainActivity extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
                     for (QueryDocumentSnapshot document : task.getResult()){
-                        Log.e("무엇을 가져오나요", document.getString("elderName"));
+                        Elder elder = document.toObject(Elder.class);
+                        elderArrayList.add(elder);
                         namelist.add(document.getString("elderName"));
-                        document.getId();
+//                        document.getId();
+                        Log.e("ekderAr",document.getData().toString());
 
                     }
 
@@ -169,12 +187,19 @@ public class MainActivity extends Fragment {
                         Intent c = new Intent(getActivity(), savepic.class);
                         startActivity(c);
                         break;
+//                    case R.id.btn_popup:
+//                        showDialog(getActivity());
+//                        break;
                 }
             }
         };
         btn_live.setOnClickListener(cl);
         btn_schedule.setOnClickListener(cl);
         btn_videofile.setOnClickListener(cl);
+//        btn_popup.setOnClickListener(cl);
+
         return view;
     }
+
+
 }
