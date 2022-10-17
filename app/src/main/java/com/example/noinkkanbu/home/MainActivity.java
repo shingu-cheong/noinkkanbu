@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import com.example.noinkkanbu.MyMqtt;
 import com.example.noinkkanbu.R;
 import com.example.noinkkanbu.home.monitoring;
+import com.example.noinkkanbu.model.Elder;
 import com.example.noinkkanbu.savepic;
 import com.example.noinkkanbu.schedule;
 import com.example.noinkkanbu.thread.GetHuman;
@@ -58,6 +59,7 @@ public class MainActivity extends Fragment {
     private JSONObject jsonObject =null , jsonpre = null;
     private String nowElderId;
     private List<String> namelist = new ArrayList<String>();
+    private  ArrayList<Elder> elderArrayList = new ArrayList<>();
     private String[] items ;
     private View.OnClickListener cl;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();

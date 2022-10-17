@@ -2,46 +2,45 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.noinkkanbu">
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-
         android:icon="@mipmap/ic_launcher1"
-
-        android:usesCleartextTraffic="true"
-
-
         android:label="noinkkanbu"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Noinkkanbu"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.example.noinkkanbu.mqtttest"
+            android:name=".showvideo"
             android:exported="true" />
         <activity
-            android:name="com.example.noinkkanbu.manage.AddOlderMan"
+            android:name=".mqtttest"
             android:exported="true" />
         <activity
-            android:name="com.example.noinkkanbu.RegisterActivity"
-            android:exported="true"/>
-        <activity
-            android:name="com.example.noinkkanbu.login"
-            android:label="kkanbu"
+            android:name=".manage.AddOlderMan"
             android:exported="true" />
         <activity
-            android:name="com.example.noinkkanbu.usersetting.LoginActivity"
+            android:name=".RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".login"
+            android:exported="true"
+            android:label="kkanbu" />
+        <activity
+            android:name=".usersetting.LoginActivity"
             android:exported="true" />
         <activity
             android:name=".cameratest"
             android:exported="true" />
-
         <activity
             android:name=".manage.elderDetail"
             android:exported="true" />
@@ -56,27 +55,25 @@
         <activity
             android:name=".schedule"
             android:exported="true" />
-
         <activity
             android:name=".savepic"
             android:exported="true" />
+
+
+
         <activity
-            android:name="com.example.noinkkanbu.SearchAddress"
+            android:name=".SearchAddress"
             android:exported="true"
-            android:screenOrientation="portrait"/>
-
-
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.noinkkanbu.usersetting.Register"
+            android:name=".usersetting.Register"
             android:exported="true" />
-
-
-
         <activity
             android:name=".home.IntroActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
