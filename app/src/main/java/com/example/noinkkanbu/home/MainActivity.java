@@ -62,6 +62,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Fragment {
+
     private MyMqtt myMqtt;
     private ImageButton btn_live, btn_schedule, btn_videofile, btn_popup;
     private ImageView profile, present;
@@ -79,6 +80,8 @@ public class MainActivity extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private  FirestoreRecyclerAdapter adapter;
+    private  RecyclerView recyclerView;
+    private  MainActivity2 mainActivity2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,7 +98,9 @@ public class MainActivity extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mainActivity2 = (MainActivity2) getActivity();
         View view = inflater.inflate(R.layout.activity_main,container,false);
+
         btn_live = view.findViewById(R.id.btn_live);
         btn_videofile = view.findViewById(R.id.btn_videofile);
         btn_schedule = view.findViewById(R.id.btn_schedule);
@@ -105,6 +110,7 @@ public class MainActivity extends Fragment {
         GradientDrawable drawable = (GradientDrawable) getContext().getDrawable(R.drawable.home_profileround);
         profile.setBackground(drawable);
         profile.setClipToOutline(true);
+
         client.toAsync().subscribeWith().topicFilter("Sensor/Humancount").callback(subscribe ->{
             byte[] payload = subscribe.getPayloadAsBytes();
 
@@ -131,8 +137,7 @@ public class MainActivity extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
                     for (QueryDocumentSnapshot document : task.getResult()){
-                        Elder elder = document.toObject(Elder.class);
-                        elderArrayList.add(elder);
+                        Elder elder = new Elder();
                         namelist.add(document.getString("elderName"));
 //                        document.getId();
                         Log.e("ekderAr",document.getData().toString());
@@ -144,30 +149,30 @@ public class MainActivity extends Fragment {
         });
 
 
-
-        view.findViewById(R.id.btn_popup).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
-
-                builder
-                    .setSingleChoiceItems(namelist.toArray(new String[0]), -1, new DialogInterface.OnClickListener(){
-                        @Override
-                        public void onClick(DialogInterface dialog, int pos)
-                        {
-                            items =  namelist.toArray(new String[0]);
-                            Toast.makeText(getActivity(),items[pos],Toast.LENGTH_LONG).show();
-                        }
-                    })
-                    .setPositiveButton("선택", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    })
-                    .show();
-            }
-        });
+//
+//        view.findViewById(R.id.btn_popup).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
+//
+//                builder
+//                    .setSingleChoiceItems(namelist.toArray(new String[0]), -1, new DialogInterface.OnClickListener(){
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int pos)
+//                        {
+//                            items =  namelist.toArray(new String[0]);
+//                            Toast.makeText(getActivity(),items[pos],Toast.LENGTH_LONG).show();
+//                        }
+//                    })
+//                    .setPositiveButton("선택", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//
+//                        }
+//                    })
+//                    .show();
+//            }
+//        });
 
 
 
@@ -187,19 +192,32 @@ public class MainActivity extends Fragment {
                         Intent c = new Intent(getActivity(), savepic.class);
                         startActivity(c);
                         break;
-//                    case R.id.btn_popup:
-//                        showDialog(getActivity());
-//                        break;
+                    case R.id.btn_popup:
+                        showDialog(view);
+                        break;
                 }
             }
         };
         btn_live.setOnClickListener(cl);
         btn_schedule.setOnClickListener(cl);
         btn_videofile.setOnClickListener(cl);
-//        btn_popup.setOnClickListener(cl);
+        btn_popup.setOnClickListener(cl);
 
         return view;
     }
+
+    private  void showDialog(View v){
+        elderDialog dialog = elderDialog.getInstance();
+        dialog.setFragmentInterfacer(new elderDialog.MyFragmentInterfacer() {
+            @Override
+            public void onButtonClick(String input) {
+
+            }
+        });
+        dialog.show(getFragmentManager(), elderDialog.TAG_EVENT_DIALOG);
+
+    }
+
 
 
 }

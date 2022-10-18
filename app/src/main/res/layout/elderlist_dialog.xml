@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:divider="@null"
             android:dividerHeight="10dp"
-            android:id="@+id/listview_alterdialog_list"/>
+            android:id="@+id/elder_name_recycler"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

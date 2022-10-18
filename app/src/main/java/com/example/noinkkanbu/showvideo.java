@@ -38,7 +38,7 @@ public class showvideo extends AppCompatActivity {
         StorageReference listRef = FirebaseStorage.getInstance().getReference().child("fall2.mp4");
 
 
-        Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/noinkkanbu.appspot.com/o/video%2Ffall.mp4?alt=media&token=d19a0fab-f761-4856-a19e-a021fbde757d");
+        Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/noinkkanbu.appspot.com/o/video%2F2022-10-18%2019_07_22.mp4?alt=media&token=5b24a7e3-0a03-485c-9181-2708163d8fc9");
         Log.e("fsdf",uri.toString());
         videoView.setVideoURI(uri);
         videoView.setMediaController(new MediaController(this));

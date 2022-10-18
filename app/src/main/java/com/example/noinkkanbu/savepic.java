@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,14 +16,23 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.noinkkanbu.adapter.videoadpater;
+import com.example.noinkkanbu.manage.management;
+import com.example.noinkkanbu.model.Elder;
+import com.example.noinkkanbu.model.Video;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
@@ -31,9 +41,14 @@ import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
+import java.util.Date;
 
 public class savepic extends AppCompatActivity {
-    FirebaseStorage storage;
+    FirebaseFirestore db;
+    private  FirestoreRecyclerAdapter adapter;
+    RecyclerView recyclerView;
+    videoadpater videoadapter;
+    Video video ;
 
 
     @Override
@@ -41,58 +56,85 @@ public class savepic extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_savepic);
 
-        // 이미지 폴더 경로 참조
-        StorageReference listRef = FirebaseStorage.getInstance().getReference().child("image_store");
+        db = FirebaseFirestore.getInstance();
+        recyclerView = findViewById(R.id.videoRecycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        Query query = db.collection("video").orderBy("createDate", Query.Direction.DESCENDING);
+
+        FirestoreRecyclerOptions<Video> options = new FirestoreRecyclerOptions.Builder<Video>()
+                .setQuery(query, Video.class)
+                .build();
+        adapter = new videoadpater(options);
+        recyclerView.setAdapter(adapter);
+
+
+
 
         // listAll(): 폴더 내의 모든 이미지를 가져오는 함수
-        listRef.listAll()
-                .addOnSuccessListener(new OnSuccessListener<ListResult>() {
-                    @Override
-                    public void onSuccess(ListResult listResult) {
-                        int i = 1;
-                        // 폴더 내의 item이 동날 때까지 모두 가져온다.
-                        for (StorageReference item : listResult.getItems()) {
+//        listRef.listAll()
+//                .addOnSuccessListener(new OnSuccessListener<ListResult>() {
+//                    @Override
+//                    public void onSuccess(ListResult listResult) {
+//                        int i = 1;
+//                        // 폴더 내의 item이 동날 때까지 모두 가져온다.
+//                        for (StorageReference item : listResult.getItems()) {
+//
+//                            // imageview와 textview를 생성할 레이아웃 id 받아오기
+//                            LinearLayout layout = (LinearLayout) findViewById(R.id.maskImageLayout);
+//                            // textview 동적생성
+//                            TextView tv = new TextView(savepic.this);
+//                            tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//                            tv.setText(i +"번째 사진");
+//                            tv.setTextSize(25);
+//                            tv.setTextColor(0xff004497);
+//                            layout.addView(tv);
+//                            i += 1;
+//
+//                            //imageview 동적생성
+//                            ImageView iv = new ImageView(savepic.this);
+//                            iv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//                            layout.addView(iv);
+//
+//                            // reference의 item(이미지) url 받아오기
+//                            item.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Uri> task) {
+//                                    if (task.isSuccessful()) {
+//                                        // Glide 이용하여 이미지뷰에 로딩
+//                                        Glide.with(savepic.this)
+//                                                .load(task.getResult())
+//                                                .into(iv);
+//                                    } else {
+//                                        // URL을 가져오지 못하면 토스트 메세지
+//                                        Toast.makeText(savepic.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                                    }
+//                                }
+//
+//                            }).addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception e) {
+//                                    // Uh-oh, an error occurred!
+//                                }
+//                            });
+//                        }
+//                    }
+//                });
+    }
 
-                            // imageview와 textview를 생성할 레이아웃 id 받아오기
-                            LinearLayout layout = (LinearLayout) findViewById(R.id.maskImageLayout);
-                            // textview 동적생성
-                            TextView tv = new TextView(savepic.this);
-                            tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                            tv.setText(i +"번째 사진");
-                            tv.setTextSize(25);
-                            tv.setTextColor(0xff004497);
-                            layout.addView(tv);
-                            i += 1;
 
-                            //imageview 동적생성
-                            ImageView iv = new ImageView(savepic.this);
-                            iv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                            layout.addView(iv);
 
-                            // reference의 item(이미지) url 받아오기
-                            item.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Uri> task) {
-                                    if (task.isSuccessful()) {
-                                        // Glide 이용하여 이미지뷰에 로딩
-                                        Glide.with(savepic.this)
-                                                .load(task.getResult())
-                                                .into(iv);
-                                    } else {
-                                        // URL을 가져오지 못하면 토스트 메세지
-                                        Toast.makeText(savepic.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
 
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    // Uh-oh, an error occurred!
-                                }
-                            });
-                        }
-                    }
-                });
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
     }
 }
 
