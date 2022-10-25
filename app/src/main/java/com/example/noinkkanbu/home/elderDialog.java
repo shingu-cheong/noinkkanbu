@@ -116,7 +116,7 @@ public class elderDialog extends DialogFragment {
 //        });
 
 //        화면터치시 꺼짐 막기
-        setCancelable(false);
+        setCancelable(true);
 
         return v;
     }

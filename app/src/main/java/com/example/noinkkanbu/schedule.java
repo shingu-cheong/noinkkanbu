@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.noinkkanbu.home.MainActivity2;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -29,6 +31,8 @@ public class schedule extends AppCompatActivity
     public TextView diaryTextView, textView2, textView3;
     public EditText contextEditText;
     public ImageButton back;
+    public FirebaseUser user;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

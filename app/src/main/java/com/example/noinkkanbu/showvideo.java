@@ -3,6 +3,7 @@ package com.example.noinkkanbu;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import com.google.firebase.storage.StorageReference;
 
 public class showvideo extends AppCompatActivity {
     VideoView videoView;
+    Uri uri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +36,14 @@ public class showvideo extends AppCompatActivity {
         videoView = findViewById(R.id.videoView);
 
         // 이미지 폴더 경로 참조
+        Intent intent = getIntent();
+        String url = intent.getStringExtra("url");
+
 
         StorageReference listRef = FirebaseStorage.getInstance().getReference().child("fall2.mp4");
 
 
-        Uri uri = Uri.parse("https://firebasestorage.googleapis.com/v0/b/noinkkanbu.appspot.com/o/video%2F2022-10-18%2019_07_22.mp4?alt=media&token=5b24a7e3-0a03-485c-9181-2708163d8fc9");
+        uri = Uri.parse(url);
         Log.e("fsdf",uri.toString());
         videoView.setVideoURI(uri);
         videoView.setMediaController(new MediaController(this));

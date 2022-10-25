@@ -1,11 +1,15 @@
 package com.example.noinkkanbu;
 
+import static android.content.ContentValues.TAG;
+
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,12 +19,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.noinkkanbu.adapter.videoadpater;
+import com.example.noinkkanbu.home.MainActivity2;
 import com.example.noinkkanbu.manage.management;
 import com.example.noinkkanbu.model.Elder;
 import com.example.noinkkanbu.model.Video;
@@ -31,8 +37,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
@@ -41,14 +51,16 @@ import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class savepic extends AppCompatActivity {
     FirebaseFirestore db;
-    private  FirestoreRecyclerAdapter adapter;
+
     RecyclerView recyclerView;
-    videoadpater videoadapter;
-    Video video ;
+    ArrayList<Video> list;
+    videoadpater adapter;
+    Video video;
 
 
     @Override
@@ -58,19 +70,36 @@ public class savepic extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.videoRecycler);
+        list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
         Query query = db.collection("video").orderBy("createDate", Query.Direction.DESCENDING);
 
-        FirestoreRecyclerOptions<Video> options = new FirestoreRecyclerOptions.Builder<Video>()
-                .setQuery(query, Video.class)
-                .build();
-        adapter = new videoadpater(options);
+        adapter = new videoadpater(this, list);
+
         recyclerView.setAdapter(adapter);
 
+        query.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w(TAG, "listen:error", e);
+                    return;
+                }
+
+                for (DocumentChange dc : value.getDocumentChanges()) {
+                    if (dc.getType() == DocumentChange.Type.ADDED) {
+                        Video video = dc.getDocument().toObject(Video.class);
+                        list.add(video);
+
+                    }
+                }
+                adapter.notifyDataSetChanged();
 
 
+            }
+        });
 
         // listAll(): 폴더 내의 모든 이미지를 가져오는 함수
 //        listRef.listAll()
@@ -125,16 +154,5 @@ public class savepic extends AppCompatActivity {
 
 
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
 }
 

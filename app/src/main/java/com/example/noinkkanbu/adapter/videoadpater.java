@@ -1,5 +1,6 @@
 package com.example.noinkkanbu.adapter;
 
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,60 +19,64 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.noinkkanbu.R;
 import com.example.noinkkanbu.model.Video;
+import com.example.noinkkanbu.savepic;
 import com.example.noinkkanbu.showvideo;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class videoadpater extends FirestoreRecyclerAdapter<Video, videoadpater.videoviewholder>{
+public class videoadpater extends RecyclerView.Adapter <videoadpater.videoviewholder>{
+    Context context;
+    ArrayList<Video> list;
 
-
-    /**
-     * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
-     * FirestoreRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
-    public videoadpater(@NonNull FirestoreRecyclerOptions<Video> options) {
-        super(options);
+    public videoadpater(Context context, ArrayList<Video> list) {
+        this.context = context;
+        this.list = list;
     }
 
-    @Override
-    protected void onBindViewHolder(@NonNull videoadpater.videoviewholder holder, int position, @NonNull Video model) {
-        holder.date.setText(model.getCreateDate().toDate().toString());
-        Glide.with(holder.image)
-                .load(model.getUrl())
-                .into(holder.image);
-
-    }
 
     @NonNull
     @Override
     public videoadpater.videoviewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.savevideo_item,parent, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.savevideo_item, parent, false);
+        return  new videoviewholder(v);
+    }
 
-        return new videoviewholder(view);
+    @Override
+    public void onBindViewHolder(@NonNull videoadpater.videoviewholder holder, int position) {
+        Video video = list.get(position);
+        holder.date.setText(video.getCreateDate().toDate().toString());
+        Glide.with(context).load(video.getUrl()).into(holder.thumnail);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, showvideo.class);
+                intent.putExtra("url", video.getUrl());
+                context.startActivity(intent);
+
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
     }
 
     public class videoviewholder extends RecyclerView.ViewHolder {
-        ImageView image;
         TextView date;
+        ImageView thumnail;
         public videoviewholder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.videoimage);
             date = itemView.findViewById(R.id.videodate);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(get, showvideo.class);
-                }
-            });
+            thumnail = itemView.findViewById(R.id.videoimage);
+
+
+
         }
     }
-
-
-
 }
