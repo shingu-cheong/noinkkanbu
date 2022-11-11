@@ -23,6 +23,9 @@
             android:name=".showvideo"
             android:exported="true" />
         <activity
+            android:name=".utils.alram"
+            android:exported="true" />
+        <activity
             android:name=".mqtttest"
             android:exported="true" />
         <activity

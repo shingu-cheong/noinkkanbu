@@ -17,10 +17,15 @@ public class Elder implements Serializable {
 
     private String mngPh;
 
+    private String bloodtype;
+
+    private String et_ma
+
     private String elderImg;
 
     private String managerToken;
 
+    private String elderUniq;
 
     public String getElderImg() {
         return elderImg;
@@ -76,6 +81,14 @@ public class Elder implements Serializable {
 
     public void setManagerToken(String managerToken) {
         this.managerToken = managerToken;
+    }
+
+    public String getElderUniq() {
+        return elderUniq;
+    }
+
+    public void setElderUniq(String elderUniq) {
+        this.elderUniq = elderUniq;
     }
 
     public Elder() {

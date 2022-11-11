@@ -59,7 +59,7 @@ import retrofit2.Response;
 
 public class AddOlderMan extends AppCompatActivity {
     Toolbar tb_addman;
-    TextInputLayout et_manName, et_manPh, et_managerPh, et_detail;
+    TextInputLayout et_manName, et_manPh, et_managerPh, et_detail, et_managerRel, et_managername, bloodtype ;
     EditText  et_manAdr;
     SharedPreferences shared ;
     Button bt_addman, bt_button;
@@ -85,6 +85,9 @@ public class AddOlderMan extends AppCompatActivity {
         et_manAdr.setFocusable(false);
         et_managerPh = findViewById(R.id.et_managerPh);
         et_detail = findViewById(R.id.et_manDetail);
+        et_managerRel = findViewById(R.id.et_managerRel);
+        et_managername = findViewById(R.id.et_managername);
+        bloodtype = findViewById(R.id.bloodtype);
         bt_addman = findViewById(R.id.addman);
         iv_elder = findViewById(R.id.elderImg);
         db = FirebaseFirestore.getInstance();
@@ -268,6 +271,7 @@ public class AddOlderMan extends AppCompatActivity {
         elder.setElderPh(et_manPh.getEditText().getText().toString());
         elder.setMngPh(et_managerPh.getEditText().getText().toString());
         elder.setManagerToken(firebaseUser.getUid());
+        elder.setElderUniq(et_detail.getEditText().getText().toString());
         return elder;
     }
 //----------------------------주소 받아오기기

@@ -164,7 +164,7 @@
             <TextView
                 android:id="@+id/dm_edress1"
                 android:layout_width="183dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="48dp"
                 android:text=" "
@@ -380,37 +380,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dm_gdph" />
-
-            <TextView
-                android:id="@+id/dm_dv"
-                android:layout_width="90dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="100dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="기기연결 : "
-                android:textColor="@color/black"
-                android:textSize="17dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/dm_dv1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view6" />
-
-            <TextView
-                android:id="@+id/dm_dv1"
-                android:layout_width="183dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="40dp"
-                android:text=" "
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view6" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

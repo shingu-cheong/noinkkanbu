@@ -23,7 +23,6 @@ import com.example.noinkkanbu.savepic;
 import com.example.noinkkanbu.showvideo;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
