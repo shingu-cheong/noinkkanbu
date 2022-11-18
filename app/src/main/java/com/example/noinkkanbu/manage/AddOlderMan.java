@@ -272,6 +272,9 @@ public class AddOlderMan extends AppCompatActivity {
         elder.setMngPh(et_managerPh.getEditText().getText().toString());
         elder.setManagerToken(firebaseUser.getUid());
         elder.setElderUniq(et_detail.getEditText().getText().toString());
+        elder.setBloodtype(bloodtype.getEditText().getText().toString());
+        elder.setEt_managerRel(et_managerRel.getEditText().getText().toString());
+        elder.setEt_managername(et_managername.getEditText().getText().toString());
         return elder;
     }
 //----------------------------주소 받아오기기

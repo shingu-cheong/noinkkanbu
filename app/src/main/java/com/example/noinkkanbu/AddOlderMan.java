@@ -32,7 +32,7 @@ import retrofit2.Response;
 
 public class AddOlderMan extends AppCompatActivity {
     Toolbar tb_addman;
-    TextInputLayout et_manName, et_manPh, et_managerPh, et_detail;
+    TextInputLayout et_manName, et_manPh, et_managerPh, et_detail, bloodtype, et_managerRel, et_managername;
     EditText  et_manAdr;
     SharedPreferences shared ;
     Button bt_addman;
@@ -52,7 +52,6 @@ public class AddOlderMan extends AppCompatActivity {
         et_manAdr.setFocusable(false);
         et_managerPh = findViewById(R.id.et_managerPh);
         et_detail = findViewById(R.id.et_manDetail);
-        bt_addman = findViewById(R.id.addman);
         setSupportActionBar(tb_addman);
 
 

@@ -19,7 +19,9 @@ public class Elder implements Serializable {
 
     private String bloodtype;
 
-    private String et_ma
+    private String et_managerRel;
+
+    private String et_managername;
 
     private String elderImg;
 
@@ -73,6 +75,30 @@ public class Elder implements Serializable {
 
     public void setMngPh(String mngPh) {
         this.mngPh = mngPh;
+    }
+
+    public String getbloodtype() {
+        return bloodtype;
+    }
+
+    public void setBloodtype(String bloodtype) {
+        this.bloodtype = bloodtype;
+    }
+
+    public String getEt_managerRel() {
+        return et_managerRel;
+    }
+
+    public void setEt_managerRel(String et_managerRel) {
+        this.et_managerRel = et_managerRel;
+    }
+
+    public String getEt_managername() {
+        return et_managername;
+    }
+
+    public void setEt_managername(String et_managername) {
+        this.et_managername = et_managername;
     }
 
     public String getManagerToken() {

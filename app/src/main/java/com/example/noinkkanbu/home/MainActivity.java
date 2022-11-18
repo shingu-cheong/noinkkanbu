@@ -32,6 +32,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.noinkkanbu.MyMqtt;
 import com.example.noinkkanbu.R;
+import com.example.noinkkanbu.graph;
 import com.example.noinkkanbu.home.monitoring;
 import com.example.noinkkanbu.manage.elderDetail;
 import com.example.noinkkanbu.manage.management;
@@ -64,7 +65,7 @@ import java.util.List;
 public class MainActivity extends Fragment {
 
     private MyMqtt myMqtt;
-    private ImageButton btn_live, btn_schedule, btn_videofile, btn_popup;
+    private ImageButton btn_live, btn_schedule, btn_videofile, btn_popup, btn_pattern;
     private ImageView profile, present;
     private GetHuman getHuman;
     private int humancount, humancountpre;
@@ -106,6 +107,7 @@ public class MainActivity extends Fragment {
         btn_schedule = view.findViewById(R.id.btn_schedule);
         btn_popup = view.findViewById(R.id.btn_popup);
         profile = view.findViewById(R.id.home_profile);
+        btn_pattern = view.findViewById(R.id.btn_pattern);
         present = view.findViewById(R.id.present);
         GradientDrawable drawable = (GradientDrawable) getContext().getDrawable(R.drawable.home_profileround);
         profile.setBackground(drawable);
@@ -192,6 +194,10 @@ public class MainActivity extends Fragment {
                         Intent c = new Intent(getActivity(), savepic.class);
                         startActivity(c);
                         break;
+                    case R.id.btn_pattern:
+                        Intent d = new Intent(getActivity(), graph.class);
+                        startActivity(d);
+                        break;
                     case R.id.btn_popup:
                         showDialog(view);
                         break;
@@ -202,6 +208,7 @@ public class MainActivity extends Fragment {
         btn_schedule.setOnClickListener(cl);
         btn_videofile.setOnClickListener(cl);
         btn_popup.setOnClickListener(cl);
+        btn_pattern.setOnClickListener(cl);
 
         return view;
     }
